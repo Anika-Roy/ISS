@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>roster</title>
+    <style>
+        table,
+        td {
+            border: 3px solid;
+            margin: 50px;
+            padding: 10px;
+        }
+        h1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <u><h1>Class Timetable</h1></u>
+        <table id="table"></table>
+
+    </center>
+
+
+    <script>
+        subjects = [];
+        for (let i = 0; i < 18; i++) {
+            subject = prompt("Please enter the subjects", "ISS");
+            subjects.push(subject);
+        }
+        // for(var i=0; i<subjects.length; i++){
+        //     document.write(subjects[i]);
+        // }
+        var Table = document.getElementById("table");
+
+        for (var i = 0; i < 7; i++) {
+            // creates a table row
+            var row = document.createElement("tr");
+
+            for (var j = 0; j < 7; j++) {
+                // Create a <td> element and a text node, make the text
+                // node the contents of the <td>, and put the <td> at
+                // the end of the table row
+                var cell = document.createElement("td");
+                var cellText
+                if (i == 0 && j == 0) {
+                    cellText = document.createTextNode("")
+                    row.appendChild(cell);
+                    continue;
+                }
+                if (i == 0) {
+                    if (j == 1)
+                        cellText = document.createTextNode("Monday")
+                    else if (j == 2)
+                        cellText = document.createTextNode("Tuesday")
+                    else if (j == 3)
+                        cellText = document.createTextNode("Wednesday")
+                    else if (j == 4)
+                        cellText = document.createTextNode("Thursday")
+                    else if (j == 5)
+                        cellText = document.createTextNode("Friday")
+                    else if (j == 6)
+                        cellText = document.createTextNode("Saturday")
+
+                }
+                else{
+                    if(j==0)
+                        cellText = document.createTextNode((i + 8) + ":00 - " + (i + 9) + ":00")
+
+                    else
+                        cellText = document.createTextNode(subjects[3 * (i - 1) + ((j - 1) % 3)])
+                }
+                
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+            }
+
+            // add the row to the end of the table body
+            Table.appendChild(row);
+        }
+
+        // var cellText = document.createTextNode(Monday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+        // var head = document.createElement("th");
+        // var cellText = document.createTextNode(Tuesday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+        // var head = document.createElement("th");
+        // var cellText = document.createTextNode(Wednesday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+        // var head = document.createElement("th");
+        // var cellText = document.createTextNode(Thursday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+        // var head = document.createElement("th");
+        // var cellText = document.createTextNode(Friday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+        // var head = document.createElement("th");
+        // var cellText = document.createTextNode(Saturday);
+        // head.appendChild(cellText);
+        // Table.appendChild(head);
+
+
+    </script>
+</body>
+
+</html>

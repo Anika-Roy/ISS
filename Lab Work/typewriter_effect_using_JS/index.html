@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        p{
+            font-size:xx-large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-weight: bold;
+            color: brown;
+            margin-top: 500px;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <p id="demo"></p>
+    </center>
+    
+
+    <script>
+        var i = 0;
+        var txt = 'hellooooo'; /* The text */
+        var speed = 300; /* The speed/duration of the effect in milliseconds */
+
+        function remove() {
+            if (i > 4) {
+                console.log(i);
+                // t = document.getElementById("demo").innerHTML[:]
+                var string=document.getElementById("demo").innerHTML
+                document.getElementById("demo").innerHTML=string.slice(0, string.length - 1);
+                i--;
+                setTimeout(remove,speed);
+            }
+            else{
+                typeWriter();
+            }
+        }
+        
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+            else if(i==txt.length)
+            {
+                i--;
+                remove();
+            }
+                
+        }
+        typeWriter();
+
+        
+    
+        //document.write(i);
+        
+        
+        
+        //setInterval(remove, speed);
+
+    </script>
+</body>
+
+</html>
